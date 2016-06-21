@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Youtube Channel videos</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/1-col-portfolio.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Youtube Channel Videos</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse" id="bs-example-navbar-collapse-1">
+                <div class="col-sm-3 col-md-3 pull-right">
+
+                <div class="input-group" id="searchBar">
+                      <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                      <div class="input-group-btn">
+                          <button class="btn btn-default" onclick="getChannelID();"><i class="glyphicon glyphicon-search"></i></button>
+                      </div>
+                </div>
+
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header" id="YTUsername">F.A.Q</h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div id="liste-videos">
+        </div>
+
+        <div class="jumbotron" id="readme">
+          <div class="container">
+            <h1>Comment on utilise ce truc?</h1>
+            <p>Rien de compliqué, il suffit de rentrer un nom d'utilisateur YouTube dans la barre de recherche en haut à droite et l'application affichera les 10 dernières vidéos de sa chaine.</p>
+            <h1>Avec quels technologies ça marche?</h1>
+            <p>Comme l'application est relativement simple, du HTML pour la forme, du JQuery pour le fond, de l'AJAX pour les requêtes et bien sûr l'API YouTube :)</p>
+            <h1>Comment ça fonctionne?</h1>
+            <p>Lors du clic sur le bouton de recherche (icone loupe), ce qui à été tapé dans le champ de texte est récupéré. Une requête AJAX est ensuite construite pour récupérer l'ID de la chaîne YouTube qui correspond à l'utilisateur.</br></br>Cette requête est envoyé sur le module officiel de YouTube ("https://www.googleapis.com/youtube/v3/..."). La requête renvoi un fichier JSON avec les infos voulues et l'application crée une deuxième requête pour cette fois ci récupérer les 10 dernières vidéos (toujours avec une requête AJAX sur le module officiel).</br></br>Enfin, une fonction JQuery récupère l'ID des vidéos et crée un iFrame pour chaque vidéo récupéré. Encore une fois, c'est avec l'API officiel que tout cela est créé</p>
+            <h1>Et le respect des consignes?</h1>
+            <p>Normalement tout est respecté, si j'ai bien compris le sujet ^^.</br></br>J'ai eu un peu de mal a comprendre si il fallait afficher les dernières vidéos d'une chaine en passant directement le nom, l'username du propriétaire ou bien l'ID de la chaine directement.</br></br>Dans le doute j'ai fait au plus logique (j'ai vu que deux chaines pouvaient avoir le même nom, par exemple : <a href="https://www.youtube.com/channel/UCc6oCVPqzw5jSYbZPqBKmGg">celle-ci</a> et <a href="https://www.youtube.com/user/OutLawzFR">celle-la</a>... J'aurai aussi pu passer directement l'ID de la chaine en paramètre mais c'est assez bizarre pour un utilisateur).</br></br>Si besoin, je peux encore changer. J'ai pas pu poser de questions car je travaille a l'usine depuis Lundi (pour les vacances) de 10h à 18h, j'ai codé l'application en 1 seule fois, a des horaires ou personne risquait de pouvoir me répondre ^^. Et encore une fois, si je suis passé a côté du sujet, un petit mail et je corrige tout ça :)</p>
+            <h1>Qu'est ce que j'ai utilisé?</h1>
+            <p>- L'API YouTube data (<a href="https://developers.google.com/youtube/v3/getting-started">lien</a>)</br>- L'API YouTube iframe (<a href="https://developers.google.com/youtube/iframe_api_reference">lien</a>)</br>- Un thème Bootstrap (<a href="http://startbootstrap.com/template-overviews/1-col-portfolio/">lien</a>)</p>
+            <h1>Combien de temps j'ai mis?</h1>
+            <p>Environs 5h, grosso-modo, 1h pour me documenter sur l'API YouTube, 2h pour coder le back, 1h pour mettre en place le front et une autre pour tout finir (mise en ligne sur Git, upload sur mon serveur...).</br></br>Je sais pas si niveau rapidité ça vous convient, mais j'avais jamais utilisé d'API, ni d'AJAX, je pourrai faire mieux maintenant</p>
+            <h1>Quelques username pour tester?</h1>
+            <p>(a rentrer dans la barre de recherche) </br>- MonsieurDream</br>- OutLawzFR</br>- EpicMealTime</br>- HowToBasic</br>- mistervofficial</p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="text-center">Version 1.0</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- iFrame YouTube API -->
+    <script src="js/iframe.js"></script>
+
+    <!-- search script -->
+    <script src="js/search.js"></script>
+
+</body>
+
+</html>
