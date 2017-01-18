@@ -6,4 +6,4 @@
 ## Screenshots
 Home page                            
 :-----------------------------------:
-![](/img/screen.PNG?raw=true)
+![](/img/screen.png?raw=true)
